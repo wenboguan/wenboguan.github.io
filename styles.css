@@ -1,21 +1,91 @@
+/* 基础：保持你的原有设置 */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
-header, section, footer {
+
+/* 扩展：把 aside 也纳入卡片样式 */
+header, section, aside, footer {
     margin: 20px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 header {
     text-align: center;
 }
+
 h1, h2, h3 {
     margin: 0;
 }
+
 ul, ol {
     padding-left: 20px;
+}
+
+/* 新增：两栏布局容器（左侧个人新闻列｜右侧正文） */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 左1｜右2 的比例，可按需调整 */
+    gap: 20px;
+    margin: 0 20px 20px 20px; /* 与 header 的 20px 间距对齐 */
+}
+
+/* 为了避免容器里再叠加外边距，让布局更紧凑 */
+.container section,
+.container aside {
+    margin: 0;
+}
+
+/* 个人新闻列时间线样式（小圆点 + 竖线） */
+#personal-news .news-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    border-left: 3px solid #e5e5e5;
+    padding-left: 16px;
+}
+
+#personal-news .news-list li {
+    position: relative;
+    margin-bottom: 16px;
+    padding-left: 12px; /* 新增：把数字与圆点拉开 */
+}
+
+
+#personal-news .news-list li::before {
+    content: "";
+    position: absolute;
+    left: -10px;          /* 圆点水平位置（与左侧竖线对齐） */
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border: 3px solid #bdbdbd;
+    border-radius: 50%;
+}
+
+#personal-news .date {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+}
+
+#personal-news .item {
+    line-height: 1.6;
+}
+
+/* 响应式：窄屏改为单栏 */
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr; /* 单列 */
+    }
+    /* 单列时让 aside/section 重新留出外边距，视觉更均衡 */
+    .container section,
+    .container aside {
+        margin-top: 20px;
+    }
 }
