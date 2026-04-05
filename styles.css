@@ -524,3 +524,126 @@ footer{
     margin-top: 10px;
   }
 }
+/* ===== Hero enhancement ===== */
+header{
+  position: relative;
+  overflow: hidden;
+}
+
+header::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(96,165,250,.30), transparent 22%),
+    radial-gradient(circle at 88% 82%, rgba(59,130,246,.22), transparent 26%),
+    radial-gradient(circle at 58% 50%, rgba(255,255,255,.05), transparent 30%),
+    linear-gradient(115deg, rgba(255,255,255,.04) 0%, transparent 28%, transparent 72%, rgba(255,255,255,.03) 100%);
+  pointer-events: none;
+}
+
+header::after{
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(96,165,250,.20) 0%, rgba(59,130,246,.08) 35%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+header > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero summary */
+.hero-summary{
+  grid-column: 2;
+  margin-top: 10px !important;
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.82);
+}
+
+/* Hero tags */
+.hero-tags{
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.hero-tags span{
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.92);
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+}
+
+/* Floating focus card */
+.hero-focus-card{
+  position: absolute;
+  right: 34px;
+  bottom: 30px;
+  width: 300px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 14px 30px rgba(0,0,0,.18);
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+.focus-label{
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.72);
+  margin-bottom: 8px;
+}
+
+.focus-text{
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.94);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .hero-focus-card{
+    position: static;
+    grid-column: 2;
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 760px){
+  .hero-summary,
+  .hero-tags{
+    grid-column: auto;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-focus-card{
+    grid-column: auto;
+    margin-top: 16px;
+  }
+}
